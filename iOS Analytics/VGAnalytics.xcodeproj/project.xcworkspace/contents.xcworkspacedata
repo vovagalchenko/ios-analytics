@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:iOS Analytics.xcodeproj">
+      location = "self:VGAnalytics.xcodeproj">
    </FileRef>
 </Workspace>

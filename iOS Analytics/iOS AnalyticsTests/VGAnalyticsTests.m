@@ -1,6 +1,6 @@
 //
-//  iOS_AnalyticsTests.m
-//  iOS AnalyticsTests
+//  VGAnalyticsTests.m
+//  VGAnalyticsTests
 //
 //  Created by Vova Galchenko on 3/15/14.
 //  Copyright (c) 2014 Vova Galchenko. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface iOS_AnalyticsTests : XCTestCase
+@interface VGAnalyticsTests : XCTestCase
 
 @end
 
-@implementation iOS_AnalyticsTests
+@implementation VGAnalyticsTests
 
 - (void)setUp
 {
