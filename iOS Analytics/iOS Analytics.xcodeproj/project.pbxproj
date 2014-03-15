@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		80629C1118D4A03100106131 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80629C1018D4A03100106131 /* Foundation.framework */; };
+		80629C1F18D4A03100106131 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80629C1E18D4A03100106131 /* XCTest.framework */; };
+		80629C2018D4A03100106131 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80629C1018D4A03100106131 /* Foundation.framework */; };
+		80629C2218D4A03100106131 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80629C2118D4A03100106131 /* UIKit.framework */; };
+		80629C2518D4A03100106131 /* libiOS Analytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80629C0D18D4A03100106131 /* libiOS Analytics.a */; };
+		80629C2B18D4A03100106131 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80629C2918D4A03100106131 /* InfoPlist.strings */; };
+		80629C2D18D4A03100106131 /* iOS_AnalyticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80629C2C18D4A03100106131 /* iOS_AnalyticsTests.m */; };
+		80629C3E18D4A07E00106131 /* Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 80629C3718D4A07E00106131 /* Analytics.m */; };
+		80629C3F18D4A07E00106131 /* AnalyticsSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 80629C3A18D4A07E00106131 /* AnalyticsSender.m */; };
+		80629C4018D4A07E00106131 /* AnalyticsWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80629C3C18D4A07E00106131 /* AnalyticsWriter.m */; };
+		80629C4318D4A27800106131 /* AnalyticsSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 80629C4218D4A27800106131 /* AnalyticsSettings.m */; };
+		80629C4418D4A60500106131 /* Analytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80629C3618D4A07E00106131 /* Analytics.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		80629C2318D4A03100106131 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80629C0518D4A03100106131 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80629C0C18D4A03100106131;
+			remoteInfo = "iOS Analytics";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		80629C0B18D4A03100106131 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				80629C4418D4A60500106131 /* Analytics.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		80629C0D18D4A03100106131 /* libiOS Analytics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libiOS Analytics.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80629C1018D4A03100106131 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		80629C1418D4A03100106131 /* iOS Analytics-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS Analytics-Prefix.pch"; sourceTree = "<group>"; };
+		80629C1D18D4A03100106131 /* iOS AnalyticsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS AnalyticsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		80629C1E18D4A03100106131 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		80629C2118D4A03100106131 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		80629C2818D4A03100106131 /* iOS AnalyticsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS AnalyticsTests-Info.plist"; sourceTree = "<group>"; };
+		80629C2A18D4A03100106131 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		80629C2C18D4A03100106131 /* iOS_AnalyticsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOS_AnalyticsTests.m; sourceTree = "<group>"; };
+		80629C3618D4A07E00106131 /* Analytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Analytics.h; sourceTree = "<group>"; };
+		80629C3718D4A07E00106131 /* Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Analytics.m; sourceTree = "<group>"; };
+		80629C3818D4A07E00106131 /* AnalyticsHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsHelpers.h; sourceTree = "<group>"; };
+		80629C3918D4A07E00106131 /* AnalyticsSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsSender.h; sourceTree = "<group>"; };
+		80629C3A18D4A07E00106131 /* AnalyticsSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsSender.m; sourceTree = "<group>"; };
+		80629C3B18D4A07E00106131 /* AnalyticsWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsWriter.h; sourceTree = "<group>"; };
+		80629C3C18D4A07E00106131 /* AnalyticsWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsWriter.m; sourceTree = "<group>"; };
+		80629C3D18D4A07E00106131 /* CommonAnalyticsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAnalyticsInfo.h; sourceTree = "<group>"; };
+		80629C4118D4A27800106131 /* AnalyticsSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsSettings.h; sourceTree = "<group>"; };
+		80629C4218D4A27800106131 /* AnalyticsSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsSettings.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80629C0A18D4A03100106131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80629C1118D4A03100106131 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80629C1A18D4A03100106131 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80629C1F18D4A03100106131 /* XCTest.framework in Frameworks */,
+				80629C2218D4A03100106131 /* UIKit.framework in Frameworks */,
+				80629C2018D4A03100106131 /* Foundation.framework in Frameworks */,
+				80629C2518D4A03100106131 /* libiOS Analytics.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		80629C0418D4A03100106131 = {
+			isa = PBXGroup;
+			children = (
+				80629C1218D4A03100106131 /* iOS Analytics */,
+				80629C2618D4A03100106131 /* iOS AnalyticsTests */,
+				80629C0F18D4A03100106131 /* Frameworks */,
+				80629C0E18D4A03100106131 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		80629C0E18D4A03100106131 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80629C0D18D4A03100106131 /* libiOS Analytics.a */,
+				80629C1D18D4A03100106131 /* iOS AnalyticsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80629C0F18D4A03100106131 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				80629C1018D4A03100106131 /* Foundation.framework */,
+				80629C1E18D4A03100106131 /* XCTest.framework */,
+				80629C2118D4A03100106131 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80629C1218D4A03100106131 /* iOS Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				80629C3618D4A07E00106131 /* Analytics.h */,
+				80629C3718D4A07E00106131 /* Analytics.m */,
+				80629C4118D4A27800106131 /* AnalyticsSettings.h */,
+				80629C4218D4A27800106131 /* AnalyticsSettings.m */,
+				80629C3818D4A07E00106131 /* AnalyticsHelpers.h */,
+				80629C3918D4A07E00106131 /* AnalyticsSender.h */,
+				80629C3A18D4A07E00106131 /* AnalyticsSender.m */,
+				80629C3B18D4A07E00106131 /* AnalyticsWriter.h */,
+				80629C3C18D4A07E00106131 /* AnalyticsWriter.m */,
+				80629C3D18D4A07E00106131 /* CommonAnalyticsInfo.h */,
+				80629C1318D4A03100106131 /* Supporting Files */,
+			);
+			path = "iOS Analytics";
+			sourceTree = "<group>";
+		};
+		80629C1318D4A03100106131 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				80629C1418D4A03100106131 /* iOS Analytics-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80629C2618D4A03100106131 /* iOS AnalyticsTests */ = {
+			isa = PBXGroup;
+			children = (
+				80629C2C18D4A03100106131 /* iOS_AnalyticsTests.m */,
+				80629C2718D4A03100106131 /* Supporting Files */,
+			);
+			path = "iOS AnalyticsTests";
+			sourceTree = "<group>";
+		};
+		80629C2718D4A03100106131 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				80629C2818D4A03100106131 /* iOS AnalyticsTests-Info.plist */,
+				80629C2918D4A03100106131 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		80629C0C18D4A03100106131 /* iOS Analytics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80629C3018D4A03100106131 /* Build configuration list for PBXNativeTarget "iOS Analytics" */;
+			buildPhases = (
+				80629C0918D4A03100106131 /* Sources */,
+				80629C0A18D4A03100106131 /* Frameworks */,
+				80629C0B18D4A03100106131 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS Analytics";
+			productName = "iOS Analytics";
+			productReference = 80629C0D18D4A03100106131 /* libiOS Analytics.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		80629C1C18D4A03100106131 /* iOS AnalyticsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80629C3318D4A03100106131 /* Build configuration list for PBXNativeTarget "iOS AnalyticsTests" */;
+			buildPhases = (
+				80629C1918D4A03100106131 /* Sources */,
+				80629C1A18D4A03100106131 /* Frameworks */,
+				80629C1B18D4A03100106131 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80629C2418D4A03100106131 /* PBXTargetDependency */,
+			);
+			name = "iOS AnalyticsTests";
+			productName = "iOS AnalyticsTests";
+			productReference = 80629C1D18D4A03100106131 /* iOS AnalyticsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80629C0518D4A03100106131 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Vova Galchenko";
+			};
+			buildConfigurationList = 80629C0818D4A03100106131 /* Build configuration list for PBXProject "iOS Analytics" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 80629C0418D4A03100106131;
+			productRefGroup = 80629C0E18D4A03100106131 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				80629C0C18D4A03100106131 /* iOS Analytics */,
+				80629C1C18D4A03100106131 /* iOS AnalyticsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		80629C1B18D4A03100106131 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80629C2B18D4A03100106131 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		80629C0918D4A03100106131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80629C4018D4A07E00106131 /* AnalyticsWriter.m in Sources */,
+				80629C3E18D4A07E00106131 /* Analytics.m in Sources */,
+				80629C3F18D4A07E00106131 /* AnalyticsSender.m in Sources */,
+				80629C4318D4A27800106131 /* AnalyticsSettings.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80629C1918D4A03100106131 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80629C2D18D4A03100106131 /* iOS_AnalyticsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		80629C2418D4A03100106131 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80629C0C18D4A03100106131 /* iOS Analytics */;
+			targetProxy = 80629C2318D4A03100106131 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		80629C2918D4A03100106131 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80629C2A18D4A03100106131 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		80629C2E18D4A03100106131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		80629C2F18D4A03100106131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		80629C3118D4A03100106131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iOS_Analytics.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS Analytics/iOS Analytics-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		80629C3218D4A03100106131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iOS_Analytics.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS Analytics/iOS Analytics-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		80629C3418D4A03100106131 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS Analytics/iOS Analytics-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "iOS AnalyticsTests/iOS AnalyticsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		80629C3518D4A03100106131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS Analytics/iOS Analytics-Prefix.pch";
+				INFOPLIST_FILE = "iOS AnalyticsTests/iOS AnalyticsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		80629C0818D4A03100106131 /* Build configuration list for PBXProject "iOS Analytics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80629C2E18D4A03100106131 /* Debug */,
+				80629C2F18D4A03100106131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80629C3018D4A03100106131 /* Build configuration list for PBXNativeTarget "iOS Analytics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80629C3118D4A03100106131 /* Debug */,
+				80629C3218D4A03100106131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		80629C3318D4A03100106131 /* Build configuration list for PBXNativeTarget "iOS AnalyticsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80629C3418D4A03100106131 /* Debug */,
+				80629C3518D4A03100106131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 80629C0518D4A03100106131 /* Project object */;
+}
