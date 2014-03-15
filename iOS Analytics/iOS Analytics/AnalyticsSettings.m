@@ -40,8 +40,9 @@ static AnalyticsSettings *sharedInstance = nil;
         NSString *analyticsPostURLString = [analyticsSettings objectForKey:@"PostURL"];
         NSAssert(analyticsPostURLString.length, @"You are missing the URL to post analytics to under the 'PostURL' key of your analytics settings dictionary in your Info.plist");
         self.analyticsPostURL = [NSURL URLWithString:analyticsPostURLString];
+        NSAssert(self.analyticsPostURL, @"Invalid URL given in IANSettings->PostURL inside your Info.plist");
     }
-    return sharedInstance;
+    return self;
 }
 
 @end

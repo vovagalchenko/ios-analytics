@@ -18,7 +18,7 @@
 		80629C3F18D4A07E00106131 /* AnalyticsSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 80629C3A18D4A07E00106131 /* AnalyticsSender.m */; };
 		80629C4018D4A07E00106131 /* AnalyticsWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 80629C3C18D4A07E00106131 /* AnalyticsWriter.m */; };
 		80629C4318D4A27800106131 /* AnalyticsSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 80629C4218D4A27800106131 /* AnalyticsSettings.m */; };
-		80629C4418D4A60500106131 /* Analytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80629C3618D4A07E00106131 /* Analytics.h */; };
+		80629C5F18D4B0A800106131 /* Analytics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80629C3618D4A07E00106131 /* Analytics.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,11 +34,11 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		80629C0B18D4A03100106131 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				80629C4418D4A60500106131 /* Analytics.h in CopyFiles */,
+				80629C5F18D4B0A800106131 /* Analytics.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
