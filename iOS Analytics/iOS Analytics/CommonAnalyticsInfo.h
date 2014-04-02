@@ -72,6 +72,11 @@ static inline NSString *appInstallationId()
     return installationId;
 }
 
+static inline NSString *deviceIdForVendor()
+{
+    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+}
+
 static inline NSDictionary *commonAttributes()
 {
     return @{
@@ -89,6 +94,7 @@ static inline NSDictionary *commonAttributes()
              @"display_scale" : [NSString stringWithFormat:@"%.2f", [[UIScreen mainScreen] scale]],
              @"app_name" : [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"],
              @"installation_id" : appInstallationId(),
+             @"device_id_for_vendor" : deviceIdForVendor(),
              @"device_name" : [[UIDevice currentDevice] name],
              };
 }
