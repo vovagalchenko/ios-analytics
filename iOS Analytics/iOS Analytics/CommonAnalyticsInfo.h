@@ -77,6 +77,23 @@ static inline NSString *deviceIdForVendor()
     return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
 
+static inline NSString *userInterfaceIdiom()
+{
+    NSString *userInterfaceIdiom = @"unknown";
+    switch (UI_USER_INTERFACE_IDIOM())
+    {
+        case UIUserInterfaceIdiomPad:
+            userInterfaceIdiom = @"iPad";
+            break;
+        case UIUserInterfaceIdiomPhone:
+            userInterfaceIdiom = @"iPhone";
+            break;
+        default:
+            break;
+    }
+    return userInterfaceIdiom;
+}
+
 static inline NSDictionary *commonAttributes()
 {
     return @{
@@ -96,6 +113,7 @@ static inline NSDictionary *commonAttributes()
              @"installation_id" : appInstallationId(),
              @"device_id_for_vendor" : deviceIdForVendor(),
              @"device_name" : [[UIDevice currentDevice] name],
+             @"user_interface_idiom" : userInterfaceIdiom()
              };
 }
 
