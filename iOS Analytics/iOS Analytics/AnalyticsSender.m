@@ -123,7 +123,7 @@ static AnalyticsSender *sharedInstance = nil;
         
         [self zipLogs:logsToSend toFileURL:[NSURL fileURLWithPath:zippedAnalyticsFilePath()]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[[AnalyticsSettings sharedInstance] analyticsPostURL]
-                                                               cachePolicy:NSURLCacheStorageNotAllowed
+                                                               cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                            timeoutInterval:ANALYTICS_POST_TIMEOUT];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBodyStream:[NSInputStream inputStreamWithURL:[NSURL fileURLWithPath:zippedAnalyticsFilePath()]]];

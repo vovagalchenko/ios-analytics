@@ -25,15 +25,70 @@
 
 @interface Analytics()
 
+- (void)persistSessionInformation;
+
 @property (nonatomic, readwrite, strong) NSNumber *sessionId;
 @property (nonatomic, readwrite, strong) NSDate *dateOfFirstEventInSession;
 @property (nonatomic, readwrite, strong) NSDate *dateOfLastEventInSession;
 
 @end
 
-@implementation Analytics
-
 static Analytics *sharedInstance = nil;
+
+#pragma mark - Crash Handlers
+
+#include <execinfo.h>
+#include <libkern/OSAtomic.h>
+volatile int32_t signalsCaught = 0;
+const int32_t maxCaughtSignals = 10;
+
+void exceptionHandler(NSException *exception) {
+    NSString *eventName = nil;
+    if([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
+    {
+        eventName = @"uncaught_exception";
+    }
+    else
+    {
+        eventName = @"bg_uncaught_exception";
+    }
+    logCrash(eventName, @{
+                          @"exception_reason" : [exception reason],
+                          @"stack" : [exception callStackSymbols],
+                          });
+    [sharedInstance persistSessionInformation];
+}
+
+void handleSignal(int sig){
+    int32_t exceptionCount = OSAtomicIncrement32(&signalsCaught);
+    if (exceptionCount > maxCaughtSignals)
+        return;
+    
+    if(sig == SIGALRM && [[UIApplication sharedApplication] applicationState] == UIApplicationStateInactive)
+    {
+        logCrash(@"sigalrm_in_bg", nil);
+        return;
+    }
+    void *backtraceFrames[128];
+    int frameCount = backtrace(backtraceFrames, 128);
+    char **symbols = backtrace_symbols(backtraceFrames, frameCount);
+    NSMutableArray *stackTrace = [NSMutableArray array];
+    for(int i = 0; i < frameCount; i++)
+    {
+        [stackTrace addObject:[NSString stringWithFormat:@"%s", symbols[i]]];
+    }
+    free(symbols);
+    
+    logCrash(@"signal_caught", @{
+                                 @"signal" : [NSNumber numberWithInt:sig],
+                                 @"signal_name" : [NSString stringWithFormat:@"%s", strsignal(sig)],
+                                 @"stack" : stackTrace,
+                                 });
+    [sharedInstance persistSessionInformation];
+    exit(128+sig);
+}
+
+@implementation Analytics
 
 #pragma mark - Singleton Management
 
@@ -169,59 +224,6 @@ static inline NSDate *getSpecialDateOrCurrent(NSString *specialDateUserDefaultsK
     [[AnalyticsWriter sharedInstance] write:finalDictionary];
 }
 
-#pragma mark - Crash Handlers
-
-#include <execinfo.h>
-#include <libkern/OSAtomic.h>
-volatile int32_t signalsCaught = 0;
-const int32_t maxCaughtSignals = 10;
-
-void exceptionHandler(NSException *exception) {
-    NSString *eventName = nil;
-    if([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
-    {
-        eventName = @"uncaught_exception";
-    }
-    else
-    {
-        eventName = @"bg_uncaught_exception";
-    }
-    logCrash(eventName, @{
-                          @"exception_reason" : [exception reason],
-                          @"stack" : [exception callStackSymbols],
-                          });
-    [sharedInstance persistSessionInformation];
-}
-
-void handleSignal(int sig){
-    int32_t exceptionCount = OSAtomicIncrement32(&signalsCaught);
-	if (exceptionCount > maxCaughtSignals)
-		return;
-    
-    if(sig == SIGALRM && [[UIApplication sharedApplication] applicationState] == UIApplicationStateInactive)
-    {
-        logCrash(@"sigalrm_in_bg", nil);
-        return;
-    }
-	void *backtraceFrames[128];
-	int frameCount = backtrace(backtraceFrames, 128);
-	char **symbols = backtrace_symbols(backtraceFrames, frameCount);
-	NSMutableArray *stackTrace = [NSMutableArray array];
-	for(int i = 0; i < frameCount; i++)
-    {
-		[stackTrace addObject:[NSString stringWithFormat:@"%s", symbols[i]]];
-	}
-	free(symbols);
-    
-    logCrash(@"signal_caught", @{
-                         @"signal" : [NSNumber numberWithInt:sig],
-                         @"signal_name" : [NSString stringWithFormat:@"%s", strsignal(sig)],
-                         @"stack" : stackTrace,
-                         });
-    [sharedInstance persistSessionInformation];
-    exit(128+sig);
-}
-
 #pragma mark - Misc Helpers
 
 static inline NSString *eventTypeStringForEventType(AnalyticsEventType eventType)
@@ -237,6 +239,12 @@ static inline NSString *eventTypeStringForEventType(AnalyticsEventType eventType
             break;
         case AnalyticsEventTypeDebug:
             eventTypeString = @"debug";
+            break;
+        case AnalyticsEventTypeNetwork:
+            eventTypeString = @"network";
+            break;
+        case AnalyticsEventTypeWarning:
+            eventTypeString = @"warning";
             break;
         case AnalyticsEventTypeIssue:
             eventTypeString = @"issue";

@@ -16,6 +16,8 @@ typedef enum AnalyticsEventType
     AnalyticsEventTypeViewChange,
     AnalyticsEventTypeAppLifecycle,
     AnalyticsEventTypeDebug,
+    AnalyticsEventTypeNetwork,
+    AnalyticsEventTypeWarning,
     AnalyticsEventTypeIssue,
     AnalyticsEventTypeCrash,
 } AnalyticsEventType;
@@ -50,6 +52,16 @@ static inline void logAppLifecycleEvent(NSString *eventName, NSDictionary *event
 static inline void logDebug(NSString *eventName, NSDictionary *eventAttributes)
 {
     logEvent(eventName, AnalyticsEventTypeDebug, eventAttributes);
+}
+
+static inline void logNetworkEvent(NSString *eventName, NSDictionary *attrs)
+{
+    logEvent(eventName, AnalyticsEventTypeNetwork, attrs);
+}
+
+static inline void logWarning(NSString *eventName, NSDictionary *attrs)
+{
+    logEvent(eventName, AnalyticsEventTypeWarning, attrs);
 }
 
 static inline void logIssue(NSString *eventName, NSDictionary *eventAttributes)
