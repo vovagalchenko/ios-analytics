@@ -121,13 +121,14 @@ static AnalyticsSender *sharedInstance = nil;
             [[UIApplication sharedApplication] endBackgroundTask:taskId];
         }];
         
-        [self zipLogs:logsToSend toFileURL:[NSURL fileURLWithPath:zippedAnalyticsFilePath()]];
+        long long contentLength = [self zipLogs:logsToSend toFileURL:[NSURL fileURLWithPath:zippedAnalyticsFilePath()]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[[AnalyticsSettings sharedInstance] analyticsPostURL]
                                                                cachePolicy:NSURLRequestReloadIgnoringCacheData
                                                            timeoutInterval:ANALYTICS_POST_TIMEOUT];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBodyStream:[NSInputStream inputStreamWithURL:[NSURL fileURLWithPath:zippedAnalyticsFilePath()]]];
         [request setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
+        [request setValue:[@(contentLength) stringValue] forHTTPHeaderField:@"Content-Length"];
         [request setValue:[NSString stringWithFormat:@"iOS %@", appInstallationId()] forHTTPHeaderField:@"User-Agent"];
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[[NSOperationQueue alloc] init]
@@ -213,6 +214,7 @@ static AnalyticsSender *sharedInstance = nil;
             NSAssert(NO, @"Error attempting to fill the uncompressed data buffer");
             return -1;
         }
+
         // The buffer is filled. We'll zip what's in the buffer and write it to the output stream.
         zippedStream.next_in = uncompressedDataBuffer;
         zippedStream.avail_in = numBytesRead;
@@ -235,8 +237,8 @@ static AnalyticsSender *sharedInstance = nil;
                     [zippedLogsOutputStream close];
                     return -1;
                 }
+                contentLength += bytesWritten;
             }
-            contentLength += numCompressedBytesToWrite;
         }
         // If avail_out != 0, we might still have data left in the compressedDataBuffer and need to flush more output out.
         while (zippedStream.avail_out == 0);
