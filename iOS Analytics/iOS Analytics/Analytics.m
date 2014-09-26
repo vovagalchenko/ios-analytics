@@ -160,6 +160,15 @@ static inline NSDate *getSpecialDateOrCurrent(NSString *specialDateUserDefaultsK
     [eventDictionary setObject:eventName forKey:ANALYTICS_EVENT_NAME_KEY];
     [eventDictionary setObject:eventTypeStringForEventType(eventType) forKey:ANALYTICS_EVENT_TYPE_KEY];
     [eventDictionary setObject:self.sessionId forKey:ANALYTICS_SESSION_ID_KEY];
+    NSDictionary *supplementalDataFromDelegate = [self.delegate supplementalData];
+    if (supplementalDataFromDelegate.count) {
+        for (NSString *key in supplementalDataFromDelegate.allKeys) {
+            if ([eventDictionary objectForKey:key]) {
+                NSLog(@"WARNING: Your delegate is providing a value for key <%@> which will override the value set by the event", key);
+            }
+            [eventDictionary setObject:[supplementalDataFromDelegate objectForKey:key] forKey:key];
+        }
+    }
     [self write:eventDictionary];
 }
 

@@ -22,7 +22,16 @@ typedef enum AnalyticsEventType
     AnalyticsEventTypeCrash,
 } AnalyticsEventType;
 
+@protocol AnalyticsDelegate <NSObject>
+
+@required
+- (NSDictionary *)supplementalData;
+
+@end
+
 @interface Analytics : NSObject
+
+@property (nonatomic, weak) id<AnalyticsDelegate>delegate;
 
 + (Analytics *)sharedInstance;
 - (void)logEventWithName:(NSString *)eventName
