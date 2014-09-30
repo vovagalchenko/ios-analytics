@@ -70,11 +70,13 @@ static inline void logNetworkEvent(NSString *eventName, NSDictionary *attrs)
 
 static inline void logWarning(NSString *eventName, NSDictionary *attrs)
 {
+    NSLog(@"WARNING: %@\n\n%@", eventName, attrs);
     logEvent(eventName, AnalyticsEventTypeWarning, attrs);
 }
 
 static inline void logIssue(NSString *eventName, NSDictionary *eventAttributes)
 {
+    NSLog(@"ISSUE: %@\n\n%@", eventName, eventAttributes);
     logEvent(eventName, AnalyticsEventTypeIssue, eventAttributes);
 }
 
