@@ -27,6 +27,9 @@ typedef enum AnalyticsEventType
 @required
 - (NSDictionary *)supplementalData;
 
+@optional
+- (void)analyticsStartedNewSession;
+
 @end
 
 @interface Analytics : NSObject
