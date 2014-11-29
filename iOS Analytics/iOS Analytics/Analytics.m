@@ -201,6 +201,10 @@ static inline NSDate *getSpecialDateOrCurrent(NSString *specialDateUserDefaultsK
             self.dateOfLastEventInSession = newLastEventInSession;
             self.sessionId = [NSNumber numberWithUnsignedLongLong:[self.sessionId unsignedLongLongValue] + 1];
             [self persistSessionInformation];
+            
+            if ([self.delegate respondsToSelector:@selector(analyticsStartedNewSession)]) {
+                [self.delegate analyticsStartedNewSession];
+            }
         }
         self.dateOfLastEventInSession = newLastEventInSession;
     }
