@@ -94,6 +94,10 @@ static inline NSString *userInterfaceIdiom()
     return userInterfaceIdiom;
 }
 
+static inline NSString *appName() {
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+}
+
 static inline NSDictionary *commonAttributes()
 {
     return @{

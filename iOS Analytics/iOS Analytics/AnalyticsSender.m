@@ -130,6 +130,7 @@ static AnalyticsSender *sharedInstance = nil;
         [request setValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
         [request setValue:[@(contentLength) stringValue] forHTTPHeaderField:@"Content-Length"];
         [request setValue:[NSString stringWithFormat:@"iOS %@", appInstallationId()] forHTTPHeaderField:@"User-Agent"];
+        [request setValue:appName() forHTTPHeaderField:@"Referer"];
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[[NSOperationQueue alloc] init]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
