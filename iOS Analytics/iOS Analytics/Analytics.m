@@ -52,10 +52,11 @@ void exceptionHandler(NSException *exception) {
     {
         eventName = @"bg_uncaught_exception";
     }
-    logCrash(eventName, @{
-                          @"exception_reason" : [exception reason],
-                          @"stack" : [exception callStackSymbols],
-                          });
+
+    [sharedInstance logEventWithName:eventName type:AnalyticsEventTypeCrash attributes:@{
+        @"exception_reason" : [exception reason],
+        @"stack" : [exception callStackSymbols],
+    }];
     [sharedInstance persistSessionInformation];
 }
 
@@ -66,7 +67,7 @@ void handleSignal(int sig){
     
     if(sig == SIGALRM && [[UIApplication sharedApplication] applicationState] == UIApplicationStateInactive)
     {
-        logCrash(@"sigalrm_in_bg", nil);
+        [sharedInstance logEventWithName:@"sigalrm_in_bg" type:AnalyticsEventTypeCrash attributes:nil];
         return;
     }
     void *backtraceFrames[128];
@@ -79,11 +80,11 @@ void handleSignal(int sig){
     }
     free(symbols);
     
-    logCrash(@"signal_caught", @{
-                                 @"signal" : [NSNumber numberWithInt:sig],
-                                 @"signal_name" : [NSString stringWithFormat:@"%s", strsignal(sig)],
-                                 @"stack" : stackTrace,
-                                 });
+    [sharedInstance logEventWithName:@"signal_caught" type:AnalyticsEventTypeCrash attributes:@{
+                                                                                                @"signal" : [NSNumber numberWithInt:sig],
+                                                                                                @"signal_name" : [NSString stringWithFormat:@"%s", strsignal(sig)],
+                                                                                                @"stack" : stackTrace,
+                                                                                                }];
     [sharedInstance persistSessionInformation];
     exit(128+sig);
 }
