@@ -198,7 +198,7 @@
 		80629C0518D4A03100106131 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Vova Galchenko";
 			};
 			buildConfigurationList = 80629C0818D4A03100106131 /* Build configuration list for PBXProject "VGAnalytics" */;
