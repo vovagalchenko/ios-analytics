@@ -159,6 +159,9 @@ static inline NSDate *getSpecialDateOrCurrent(NSString *specialDateUserDefaultsK
     
     NSMutableDictionary *eventDictionary = [NSMutableDictionary dictionaryWithDictionary:attributes];
     [eventDictionary setObject:eventName forKey:ANALYTICS_EVENT_NAME_KEY];
+#ifdef VG_ANALYTICS_DEBUG
+    NSLog(@"<%@|%@> %@", eventTypeStringForEventType(eventType), eventName, eventDictionary);
+#endif
     [eventDictionary setObject:eventTypeStringForEventType(eventType) forKey:ANALYTICS_EVENT_TYPE_KEY];
     [eventDictionary setObject:self.sessionId forKey:ANALYTICS_SESSION_ID_KEY];
     NSDictionary *supplementalDataFromDelegate = [self.delegate supplementalData];

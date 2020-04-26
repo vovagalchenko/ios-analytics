@@ -138,7 +138,9 @@ static AnalyticsSender *sharedInstance = nil;
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             if ([httpResponse statusCode] == 204)
             {
+#ifdef VG_ANALYTICS_DEBUG
                 NSLog(@"Sent analytics. Deleting local logs.");
+#endif
                 for (NSURL *sentLogFile in logsToSend)
                 {
                     [[NSFileManager defaultManager] removeItemAtURL:sentLogFile error:nil];

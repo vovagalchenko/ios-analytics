@@ -375,6 +375,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/iOS_Analytics.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				OTHER_CFLAGS = "-DVG_ANALYTICS_DEBUG";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = VGAnalytics;
 				SKIP_INSTALL = YES;
