@@ -158,6 +158,7 @@ static AnalyticsSender *sharedInstance = nil;
                 }
             }
             me.isSending = NO;
+            [[UIApplication sharedApplication] endBackgroundTask:taskId];
         }];
     }
     else
