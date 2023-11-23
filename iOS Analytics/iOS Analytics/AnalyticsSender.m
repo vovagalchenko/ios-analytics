@@ -132,14 +132,14 @@ static AnalyticsSender *sharedInstance = nil;
         [request setValue:[NSString stringWithFormat:@"iOS %@", appInstallationId()] forHTTPHeaderField:@"User-Agent"];
         [request setValue:appName() forHTTPHeaderField:@"Referer"];
         NSURLSession *session = [NSURLSession sharedSession];
-        [session dataTaskWithRequest:request
-                   completionHandler:^(NSData * data, NSURLResponse * response, NSError * connectionError) {
+        [[session dataTaskWithRequest:request
+                    completionHandler:^(NSData * data, NSURLResponse * response, NSError * connectionError) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             if ([httpResponse statusCode] == 204)
             {
-#ifdef VG_ANALYTICS_DEBUG
+        #ifdef VG_ANALYTICS_DEBUG
                 NSLog(@"Sent analytics. Deleting local logs.");
-#endif
+        #endif
                 for (NSURL *sentLogFile in logsToSend)
                 {
                     [[NSFileManager defaultManager] removeItemAtURL:sentLogFile error:nil];
@@ -159,7 +159,7 @@ static AnalyticsSender *sharedInstance = nil;
             }
             me.isSending = NO;
             [[UIApplication sharedApplication] endBackgroundTask:taskId];
-        }];
+        }] resume];
     }
     else
     {
