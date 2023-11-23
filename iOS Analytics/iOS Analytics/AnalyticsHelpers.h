@@ -11,23 +11,23 @@
 
 #define ANALYTICS_ROUGH_LOG_FILE_SIZE_CAP       (1<<20) // 1 MB
 
-static inline NSString *rootAnalyticsDirectoryPath()
+static inline NSString *rootAnalyticsDirectoryPath(void)
 {
     NSURL *documentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     return [[documentsDirectory path] stringByAppendingPathComponent:@"analytics"];
 }
 
-static inline NSString *currentLogFilePath()
+static inline NSString *currentLogFilePath(void)
 {
     return [rootAnalyticsDirectoryPath() stringByAppendingPathComponent:@"current_log"];
 }
 
-static inline NSString *logsToSendDirectoryPath()
+static inline NSString *logsToSendDirectoryPath(void)
 {
     return [rootAnalyticsDirectoryPath() stringByAppendingPathComponent:@"logs_to_send"];
 }
 
-static inline NSString *zippedAnalyticsFilePath()
+static inline NSString *zippedAnalyticsFilePath(void)
 {
     return [rootAnalyticsDirectoryPath() stringByAppendingPathComponent:@"zipped_logs"];
 }

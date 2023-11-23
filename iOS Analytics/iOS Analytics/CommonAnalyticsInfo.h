@@ -15,13 +15,13 @@
 
 #define INSTALLATION_ID_USER_DEFAULTS_KEY       @"installation_id"
 
-static inline NSString *userTimeZone()
+static inline NSString *userTimeZone(void)
 {
     [NSTimeZone resetSystemTimeZone];
     return [[NSTimeZone systemTimeZone] name];
 }
 
-static inline NSString *currentLanguage()
+static inline NSString *currentLanguage(void)
 {
     NSArray *preferredLanguages = [NSLocale preferredLanguages];
     NSString *primaryLanguage = @"unknown_language";
@@ -32,7 +32,7 @@ static inline NSString *currentLanguage()
     return primaryLanguage;
 }
 
-static inline NSString *modelId()
+static inline NSString *modelId(void)
 {
     NSString *model = @"";
     
@@ -51,14 +51,14 @@ static inline NSString *modelId()
     return model;
 }
 
-static inline NSString *displayResolutionString()
+static inline NSString *displayResolutionString(void)
 {
     CGSize screenSizeInPoints = [[UIScreen mainScreen] bounds].size;
     CGFloat pixelsPerPoint = [[UIScreen mainScreen] scale];
     return [NSString stringWithFormat:@"%dx%d", (int) (screenSizeInPoints.width * pixelsPerPoint), (int) (screenSizeInPoints.height * pixelsPerPoint)];
 }
 
-static inline NSString *appInstallationId()
+static inline NSString *appInstallationId(void)
 {
     NSString *installationId = [[NSUserDefaults standardUserDefaults] objectForKey:INSTALLATION_ID_USER_DEFAULTS_KEY];
     if (!installationId.length)
@@ -72,12 +72,12 @@ static inline NSString *appInstallationId()
     return installationId;
 }
 
-static inline NSString *deviceIdForVendor()
+static inline NSString *deviceIdForVendor(void)
 {
     return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
 
-static inline NSString *userInterfaceIdiom()
+static inline NSString *userInterfaceIdiom(void)
 {
     NSString *userInterfaceIdiom = @"unknown";
     switch (UI_USER_INTERFACE_IDIOM())
@@ -94,11 +94,11 @@ static inline NSString *userInterfaceIdiom()
     return userInterfaceIdiom;
 }
 
-static inline NSString *appName() {
+static inline NSString *appName(void) {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
 }
 
-static inline NSDictionary *commonAttributes()
+static inline NSDictionary *commonAttributes(void)
 {
     return @{
              @"os" : [@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]],

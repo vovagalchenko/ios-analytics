@@ -131,10 +131,9 @@ static AnalyticsSender *sharedInstance = nil;
         [request setValue:[@(contentLength) stringValue] forHTTPHeaderField:@"Content-Length"];
         [request setValue:[NSString stringWithFormat:@"iOS %@", appInstallationId()] forHTTPHeaderField:@"User-Agent"];
         [request setValue:appName() forHTTPHeaderField:@"Referer"];
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:[[NSOperationQueue alloc] init]
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-        {
+        NSURLSession *session = [NSURLSession sharedSession];
+        [session dataTaskWithRequest:request
+                   completionHandler:^(NSData * data, NSURLResponse * response, NSError * connectionError) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             if ([httpResponse statusCode] == 204)
             {

@@ -10,6 +10,7 @@
 #import "AnalyticsWriter.h"
 #import "AnalyticsSender.h"
 #import <UIKit/UIKit.h>
+#import <stdatomic.h>
 
 #define ANALYTICS_SESSION_ID_USER_DEFAULTS_KEY                      @"analytics_session_id"
 #define ANALYTICS_DATE_OF_FIRST_EVENT_IN_SESSION_USER_DEFAULTS_KEY  @"analytics_first_date_in_session"
@@ -39,7 +40,7 @@ static Analytics *sharedInstance = nil;
 
 #include <execinfo.h>
 #include <libkern/OSAtomic.h>
-volatile int32_t signalsCaught = 0;
+volatile atomic_int signalsCaught = 0;
 const int32_t maxCaughtSignals = 10;
 
 void exceptionHandler(NSException *exception) {
@@ -61,7 +62,7 @@ void exceptionHandler(NSException *exception) {
 }
 
 void handleSignal(int sig){
-    int32_t exceptionCount = OSAtomicIncrement32(&signalsCaught);
+    int32_t exceptionCount = atomic_fetch_add(&signalsCaught, 1);
     if (exceptionCount > maxCaughtSignals)
         return;
     
